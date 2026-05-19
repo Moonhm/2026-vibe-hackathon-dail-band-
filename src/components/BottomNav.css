@@ -3,17 +3,18 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 62px;
   background: #fff;
   border-top: 1px solid #eef0f4;
   box-shadow: 0 -2px 12px rgba(27, 42, 92, 0.08);
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   z-index: 300;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .nav-item {
   flex: 1;
+  height: 62px;
   display: flex;
   flex-direction: column;
   align-items: center;

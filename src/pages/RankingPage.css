@@ -2,7 +2,7 @@
 .rp-page {
   min-height: 100vh;
   background: #f0f2f8;
-  padding-bottom: 62px;
+  padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ── 헤더 ─────────────────────────────────────────── */

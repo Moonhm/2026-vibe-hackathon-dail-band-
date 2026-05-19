@@ -1,15 +1,21 @@
 .recommend-page {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 20px 80px;
+  padding: 40px 20px calc(80px + env(safe-area-inset-bottom, 0px));
   background: #f0f2f8;
 }
 
 .recommend-intro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   max-width: 500px;
+  width: 100%;
 }
 
 .intro-icon {
@@ -52,10 +58,11 @@
 .quiz-container {
   background: white;
   border-radius: 20px;
-  padding: 40px;
+  padding: 32px 24px;
   max-width: 600px;
   width: 100%;
   box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  margin-block: auto;
 }
 
 .progress-bar {

@@ -188,6 +188,7 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 18px 20px 8px;
   display: flex;
   flex-direction: column;
@@ -601,6 +602,7 @@
   z-index: 200;
   max-height: 60vh;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .map-slide-card.visible { transform: translateY(0); }
