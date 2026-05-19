@@ -53,7 +53,7 @@ export const festivals = [
     image: "/images/2_coex.jpg",
     visitors: 8000000,
     popularityRank: 2,
-    trend: "유지",
+    trend: "상승",
     ageRankings: { "전체": 2, "20대": 4, "30대": 2, "40대": 2, "50대": 1, "60대이상": 1 },
   },
   {
@@ -70,7 +70,7 @@ export const festivals = [
     image: "/images/3_kintex.jpg",
     visitors: 4900000,
     popularityRank: 3,
-    trend: "상승",
+    trend: "유지",
     ageRankings: { "전체": 3, "20대": 11, "30대": 3, "40대": 5, "50대": 3, "60대이상": 7 },
   },
   {
@@ -155,7 +155,7 @@ export const festivals = [
     image: "/images/8_sokcho.jpg",
     visitors: 3400000,
     popularityRank: 8,
-    trend: "유지",
+    trend: "상승",
     ageRankings: { "전체": 8, "20대": 14, "30대": 9, "40대": 9, "50대": 11, "60대이상": null },
   },
   {
@@ -223,7 +223,7 @@ export const festivals = [
     image: "/images/12_artscenter.jpg",
     visitors: 3100000,
     popularityRank: 12,
-    trend: "상승",
+    trend: "유지",
     ageRankings: { "전체": 12, "20대": null, "30대": 24, "40대": 10, "50대": 4, "60대이상": 10 },
   },
   {
@@ -308,7 +308,7 @@ export const festivals = [
     image: "/images/17_incheonpark.jpg",
     visitors: 2700000,
     popularityRank: 17,
-    trend: "상승",
+    trend: "유지",
     ageRankings: { "전체": 19, "20대": null, "30대": 17, "40대": 27, "50대": 18, "60대이상": 3 },
   },
   {
@@ -342,7 +342,7 @@ export const festivals = [
     image: "/images/19_olympicpark.jpg",
     visitors: 2600000,
     popularityRank: 19,
-    trend: "유지",
+    trend: "상승",
     ageRankings: { "전체": 21, "20대": null, "30대": 13, "40대": 18, "50대": 27, "60대이상": null },
   },
   {
@@ -393,7 +393,7 @@ export const festivals = [
     image: "/images/22_naksansa.jpg",
     visitors: 2500000,
     popularityRank: 22,
-    trend: "상승",
+    trend: "유지",
     ageRankings: { "전체": 24, "20대": null, "30대": null, "40대": 21, "50대": 9, "60대이상": 11 },
   },
   {
@@ -444,7 +444,7 @@ export const festivals = [
     image: "/images/25_gwangalli.jpg",
     visitors: 2100000,
     popularityRank: 25,
-    trend: "유지",
+    trend: "상승",
     ageRankings: { "전체": 29, "20대": 7, "30대": 26, "40대": null, "50대": null, "60대이상": null },
   },
   {
@@ -478,7 +478,7 @@ export const festivals = [
     image: "/images/27_gyeongpo.jpg",
     visitors: 2000000,
     popularityRank: 27,
-    trend: "상승",
+    trend: "유지",
     ageRankings: { "전체": null, "20대": 17, "30대": null, "40대": null, "50대": 24, "60대이상": null },
   },
   {
