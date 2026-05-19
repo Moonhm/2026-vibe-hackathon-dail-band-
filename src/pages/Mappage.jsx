@@ -391,7 +391,6 @@ function Mappage() {
 
         <div className="mfp-header">
           <span className="mfp-title">필터</span>
-          <button className="mfp-close" onClick={() => setFilterOpen(false)}>✕</button>
         </div>
 
         <div className="mfp-body">

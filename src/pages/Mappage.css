@@ -150,7 +150,8 @@
   transform: translateY(100%);
   transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
   max-height: 88vh;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .map-filter-panel.open {
@@ -159,6 +160,7 @@
 
 /* 드래그 핸들 */
 .mfp-handle {
+  flex-shrink: 0;
   width: 38px;
   height: 4px;
   background: #dde1ec;
@@ -168,9 +170,9 @@
 
 /* 헤더 */
 .mfp-header {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 14px 20px 12px;
   border-bottom: 1px solid #f0f2f8;
 }
@@ -181,22 +183,11 @@
   color: #1B2A5C;
 }
 
-.mfp-close {
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: #94a3b8;
-  cursor: pointer;
-  padding: 4px 6px;
-  line-height: 1;
-  border-radius: 8px;
-  transition: background 0.15s;
-}
-
-.mfp-close:hover { background: #f1f5f9; }
-
 /* 바디 */
 .mfp-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   padding: 18px 20px 8px;
   display: flex;
   flex-direction: column;
@@ -296,12 +287,11 @@
 
 /* 푸터 */
 .mfp-footer {
+  flex-shrink: 0;
   display: flex;
   gap: 10px;
   padding: 14px 20px;
   padding-bottom: max(20px, env(safe-area-inset-bottom, 20px));
-  position: sticky;
-  bottom: 0;
   background: #fff;
   border-top: 1px solid #f0f2f8;
 }
