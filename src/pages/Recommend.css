@@ -62,7 +62,8 @@
   max-width: 600px;
   width: 100%;
   box-shadow: 0 8px 40px rgba(0,0,0,0.1);
-  margin-block: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .progress-bar {
