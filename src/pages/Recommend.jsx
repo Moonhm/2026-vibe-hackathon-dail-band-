@@ -36,9 +36,7 @@ export default function Recommend() {
 
     if (step < totalSteps) {
       setStep(step + 1);
-    }
-
-    if (step === totalSteps) {
+    } else if (step === totalSteps) {
       const allTags = newAnswers.flat();
       const recResults = getRecommendations(allTags);
       const entry = { results: recResults, savedAt: new Date().toISOString() };

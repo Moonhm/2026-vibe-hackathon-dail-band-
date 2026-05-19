@@ -327,6 +327,17 @@ function Mappage() {
     setTimeout(() => setSelectedFestival(null), 350);
   };
 
+  // Escape 키 → 열린 패널/카드 닫기
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return;
+      if (filterOpen) { setFilterOpen(false); return; }
+      if (selectedFestival) { setCardVisible(false); setTimeout(() => setSelectedFestival(null), 350); }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [filterOpen, selectedFestival]);
+
   const handleReset = () => {
     setFilters(INIT_FILTERS);
     setFilterOpen(false);

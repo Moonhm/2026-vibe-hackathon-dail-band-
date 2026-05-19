@@ -13,7 +13,7 @@ const TOP3 = [...festivals]
 
 const RANK_META = [
   { medal: '🥇', bg: '#FEF3C7', color: '#B45309' },
-  { medal: '🥈', bg: '#F1F5F9', color: '#475569' },
+  { medal: '🥈', bg: '#f2f7fb', color: '#3d7a9a' },
   { medal: '🥉', bg: '#FFF7ED', color: '#C2410C' },
 ];
 
