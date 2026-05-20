@@ -125,7 +125,8 @@ function Mappage() {
   const rankElsRef      = useRef({});
   const heatCirclesRef  = useRef([]);
   const initStateRef    = useRef(location.state ?? null);
-  const dragStartYRef   = useRef(0);
+  const dragStartYRef       = useRef(0);
+  const filterDragStartYRef = useRef(0);
 
   // DetailPage "지도에서 위치 보기" → 그 지역 필터 사용
   // 일반 진입 → 세션에 저장된 필터 복원 (없으면 초기값)
@@ -354,6 +355,14 @@ function Mappage() {
     if (endY - dragStartYRef.current > 60) handleClose();
   };
 
+  const handleFilterDragStart = (e) => {
+    filterDragStartYRef.current = (e.touches?.[0] ?? e).clientY;
+  };
+  const handleFilterDragEnd = (e) => {
+    const endY = (e.changedTouches?.[0] ?? e).clientY;
+    if (endY - filterDragStartYRef.current > 60) setFilterOpen(false);
+  };
+
   return (
     <div className={`mappage${filters.showHeatmap ? ' heatmap-active' : ''}`}>
 
@@ -389,7 +398,13 @@ function Mappage() {
 
       {/* ── 필터 패널 (바텀 시트) ── */}
       <div className={`map-filter-panel${filterOpen ? ' open' : ''}`} role="dialog" aria-modal="true">
-        <div className="mfp-handle" />
+        <div
+          className="mfp-handle"
+          onTouchStart={handleFilterDragStart}
+          onTouchEnd={handleFilterDragEnd}
+          onMouseDown={handleFilterDragStart}
+          onMouseUp={handleFilterDragEnd}
+        />
 
         <div className="mfp-header">
           <span className="mfp-title">필터</span>
