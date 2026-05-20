@@ -178,10 +178,12 @@ function Mappage() {
     const target = festivals.find(f => f.id === initStateRef.current.festivalId);
     if (!target) return;
     const map = mapRef.current;
-    map.setCenter(new window.kakao.maps.LatLng(target.lat, target.lng));
     map.setLevel(7);
+    map.setCenter(new window.kakao.maps.LatLng(target.lat, target.lng));
     setSelectedFestival(target);
-    initStateRef.current = null; // 한 번만 실행
+    initStateRef.current = null;
+    // 슬라이드 카드가 화면 하단을 덮으므로, 핀이 카드 위 가시 영역에 오도록 위로 패닝
+    setTimeout(() => map.panBy(0, 200), 50);
   }, [mapReady]);
 
   // 최초 방문 시 필터 힌트 (한 번만)
