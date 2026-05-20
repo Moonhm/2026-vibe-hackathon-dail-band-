@@ -355,12 +355,12 @@ function Mappage() {
     if (endY - dragStartYRef.current > 60) handleClose();
   };
 
-  const handleFilterDragStart = (e) => {
-    filterDragStartYRef.current = (e.touches?.[0] ?? e).clientY;
+  const handleFilterPointerDown = (e) => {
+    filterDragStartYRef.current = e.clientY;
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
-  const handleFilterDragEnd = (e) => {
-    const endY = (e.changedTouches?.[0] ?? e).clientY;
-    if (endY - filterDragStartYRef.current > 60) setFilterOpen(false);
+  const handleFilterPointerUp = (e) => {
+    if (e.clientY - filterDragStartYRef.current > 40) setFilterOpen(false);
   };
 
   return (
@@ -400,10 +400,8 @@ function Mappage() {
       <div className={`map-filter-panel${filterOpen ? ' open' : ''}`} role="dialog" aria-modal="true">
         <div
           className="mfp-drag-zone"
-          onTouchStart={handleFilterDragStart}
-          onTouchEnd={handleFilterDragEnd}
-          onMouseDown={handleFilterDragStart}
-          onMouseUp={handleFilterDragEnd}
+          onPointerDown={handleFilterPointerDown}
+          onPointerUp={handleFilterPointerUp}
         >
           <div className="mfp-handle" />
           <div className="mfp-header">
