@@ -399,15 +399,16 @@ function Mappage() {
       {/* ── 필터 패널 (바텀 시트) ── */}
       <div className={`map-filter-panel${filterOpen ? ' open' : ''}`} role="dialog" aria-modal="true">
         <div
-          className="mfp-handle"
+          className="mfp-drag-zone"
           onTouchStart={handleFilterDragStart}
           onTouchEnd={handleFilterDragEnd}
           onMouseDown={handleFilterDragStart}
           onMouseUp={handleFilterDragEnd}
-        />
-
-        <div className="mfp-header">
-          <span className="mfp-title">필터</span>
+        >
+          <div className="mfp-handle" />
+          <div className="mfp-header">
+            <span className="mfp-title">필터</span>
+          </div>
         </div>
 
         <div className="mfp-body">
