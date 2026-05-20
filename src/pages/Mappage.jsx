@@ -155,7 +155,7 @@ function Mappage() {
 
   // 활성 필터 개수 (배지용)
   const activeCount = [
-    filters.region !== null && filters.region !== '전국',
+    filters.region !== null,
     filters.ageGroup !== '전체',
     filters.season !== CURRENT_SEASON_KEY,
     filters.sortByPopularity,
