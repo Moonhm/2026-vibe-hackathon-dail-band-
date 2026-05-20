@@ -309,6 +309,12 @@
   color: #475569;
 }
 
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 .bf-link {
   background: none;
   border: none;

@@ -8,7 +8,8 @@ import { IMG_FALLBACK, TREND } from '../utils/constants';
 import './Homepage.css';
 
 const TOP3 = [...festivals]
-  .sort((a, b) => b.visitors - a.visitors)
+  .filter(f => f.popularityRank != null)
+  .sort((a, b) => a.popularityRank - b.popularityRank)
   .slice(0, 3);
 
 const RANK_META = [
