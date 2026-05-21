@@ -90,7 +90,11 @@
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 1px 8px rgba(27, 42, 92, 0.07);
-  /* box-shadow로 왼쪽 accent 선 구현 (레이아웃에 영향 없음) */
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.rp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(27, 42, 92, 0.13);
 }
 
 /* top3 카드: 왼쪽 accent + 강화된 그림자 */
@@ -98,6 +102,12 @@
   box-shadow:
     inset 4px 0 0 var(--accent),
     0 4px 16px rgba(27, 42, 92, 0.11);
+}
+.rp-card.top3:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    inset 4px 0 0 var(--accent),
+    0 12px 28px rgba(27, 42, 92, 0.16);
 }
 
 /* ── 메인 행 ─────────────────────────────────────── */
