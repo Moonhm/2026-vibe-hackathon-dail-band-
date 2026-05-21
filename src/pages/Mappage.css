@@ -149,7 +149,7 @@
   z-index: 400;
   transform: translateY(100%);
   transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
-  max-height: 70vh;
+  max-height: 55vh;
   display: flex;
   flex-direction: column;
 }
@@ -174,14 +174,14 @@
   height: 4px;
   background: #dde1ec;
   border-radius: 2px;
-  margin: 12px auto 0;
+  margin: 8px auto 0;
 }
 
 /* 헤더 */
 .mfp-header {
   display: flex;
   align-items: center;
-  padding: 14px 20px 12px;
+  padding: 10px 20px 8px;
   border-bottom: 1px solid #f0f2f8;
 }
 
@@ -197,16 +197,16 @@
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 18px 20px 8px;
+  padding: 12px 20px 8px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 16px;
 }
 
 .mfp-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .mfp-label {
@@ -225,7 +225,7 @@
 }
 
 .mfp-chip {
-  padding: 7px 15px;
+  padding: 6px 13px;
   border-radius: 20px;
   border: 1.5px solid #e0e4ef;
   background: #fff;
