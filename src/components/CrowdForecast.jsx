@@ -5,7 +5,7 @@ function crowdLevel(rate) {
   if (rate < 30) return { label: '여유', cls: 'crowd-low' };
   if (rate < 60) return { label: '보통', cls: 'crowd-mid' };
   if (rate < 80) return { label: '붐빔', cls: 'crowd-high' };
-  return { label: '매우붐빔', cls: 'crowd-very-high' };
+  return { label: '매우 붐빔', cls: 'crowd-very-high' };
 }
 
 const DAY_KO = ['일', '월', '화', '수', '목', '금', '토'];
@@ -33,7 +33,7 @@ export default function CrowdForecast({ areaCd, signguCd }) {
   }, [areaCd, signguCd]);
 
   if (loading) return <div className="cf-loading">혼잡도 예측 불러오는 중...</div>;
-  if (error)   return <div className="cf-error">혼잡도 예측을 일시적으로 이용할 수 없습니다.</div>;
+  if (error)   return <div className="cf-error">혼잡도 예측을 일시적으로 이용할 수 없어요.</div>;
 
   const max = items.length > 0 ? Math.max(...items.map(d => parseFloat(d.cnctrRate)), 1) : 100;
 
@@ -44,7 +44,7 @@ export default function CrowdForecast({ areaCd, signguCd }) {
         <span className="cf-dot crowd-low" />여유
         <span className="cf-dot crowd-mid" />보통
         <span className="cf-dot crowd-high" />붐빔
-        <span className="cf-dot crowd-very-high" />매우붐빔
+        <span className="cf-dot crowd-very-high" />매우 붐빔
       </div>
       <div className="cf-bars">
         {items.map(d => {
