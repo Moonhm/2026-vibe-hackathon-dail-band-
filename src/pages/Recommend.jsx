@@ -70,7 +70,7 @@ export default function Recommend() {
           <h2>나에게 맞는 여행지 찾기</h2>
           <p>
             5가지 질문에 답하면 당신의 여행 성향을 분석해<br />
-            딱 맞는 국내 여행지와 추천 관광지를 알려드립니다!
+            딱 맞는 국내 여행지와 추천 관광지를 알려드려요!
           </p>
           <button className="btn-start" onClick={() => setStep(1)}>
             테스트 시작하기

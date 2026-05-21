@@ -64,7 +64,7 @@ export const destinations = [
       { name: "경포해변", id: 27 },
     ],
     image: "/images/27_gyeongpo.jpg",
-    tip: "KTX 강릉선으로 서울에서 2시간이면 도착",
+    tip: "KTX 강릉선으로 서울에서 2시간이면 도착할 수 있어요!",
   },
   {
     id: "seoul",
@@ -77,7 +77,7 @@ export const destinations = [
       { name: "반포한강공원", id: 26 },
     ],
     image: "/images/5_museum.jpg",
-    tip: "대중교통이 편리해 서울 패스 활용 추천",
+    tip: "대중교통이 편리하니 서울 패스를 활용해 보세요!",
   },
   {
     id: "jeonbuk",
@@ -88,7 +88,7 @@ export const destinations = [
       { name: "전주한옥마을", id: 11 },
     ],
     image: "/images/11_jeonju.jpg",
-    tip: "한복 대여 후 한옥마을 산책이 필수 코스",
+    tip: "한복 대여 후 한옥마을 산책은 꼭 해보세요!",
   },
   {
     id: "gyeongbuk",
@@ -99,7 +99,7 @@ export const destinations = [
       { name: "불국사", id: 15 },
     ],
     image: "/images/15_bulguksa.jpg",
-    tip: "봄 벚꽃 시즌과 가을 단풍 시즌 방문을 추천",
+    tip: "봄 벚꽃 시즌과 가을 단풍 시즌 방문을 추천해요!",
   },
   {
     id: "busan",
@@ -125,7 +125,7 @@ export const destinations = [
       { name: "화성행궁", id: 28 },
     ],
     image: "/images/6_seoulpark.jpg",
-    tip: "수도권에서 당일치기도 가능한 근거리 여행지",
+    tip: "수도권에서 당일치기도 가능한 근거리 여행지예요!",
   },
   {
     id: "incheon",
@@ -138,7 +138,7 @@ export const destinations = [
       { name: "인천대공원", id: 17 },
     ],
     image: "/images/20_oido.jpg",
-    tip: "수도권 전철로 쉽게 접근 가능한 근거리 바다",
+    tip: "수도권 전철로 쉽게 접근할 수 있는 근거리 바다예요!",
   },
   {
     id: "gyeongnam",
