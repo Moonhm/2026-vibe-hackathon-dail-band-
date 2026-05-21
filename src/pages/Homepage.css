@@ -228,6 +228,9 @@
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 16px 36px rgba(27, 42, 92, 0.16);
 }
+.festival-card:hover .card-medal {
+  filter: brightness(1.15) drop-shadow(0 0 8px currentColor);
+}
 
 .card-img-wrap {
   position: relative;
@@ -250,6 +253,7 @@
   font-weight: 800;
   backdrop-filter: blur(4px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: filter 0.2s;
 }
 
 .card-body {

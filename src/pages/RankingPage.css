@@ -146,6 +146,10 @@
   color: #fff;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   gap: 0;
+  transition: filter 0.2s;
+}
+.rp-card.top3:hover .rp-badge.medal {
+  filter: brightness(1.15) drop-shadow(0 0 10px var(--accent));
 }
 
 .medal-rank {
