@@ -112,7 +112,7 @@ export const destinations = [
       { name: "벡스코", id: 29 },
     ],
     image: "/images/25_gwangalli.jpg",
-    tip: "여름 방문 시 숙소 예약을 2~3개월 전에 해두세요",
+    tip: "여름 방문 시 숙소 예약을 2~3개월 전에 해두세요!",
   },
   {
     id: "gyeonggi",
@@ -150,7 +150,7 @@ export const destinations = [
       { name: "해동용궁사", id: 24 },
     ],
     image: "/images/22_naksansa.jpg",
-    tip: "봄 산벚꽃, 가을 단풍 시즌이 특히 아름다워요",
+    tip: "봄 산벚꽃, 가을 단풍 시즌이 특히 아름다워요!",
   },
 ];
 
