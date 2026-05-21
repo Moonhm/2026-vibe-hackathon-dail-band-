@@ -223,10 +223,12 @@
   box-shadow: 0 2px 12px rgba(27, 42, 92, 0.08);
   transition: transform 0.15s, box-shadow 0.15s;
   cursor: pointer;
+  position: relative;
 }
 .festival-card:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 16px 36px rgba(27, 42, 92, 0.16);
+  z-index: 1;
 }
 .festival-card:hover .card-medal {
   filter: brightness(1.15) drop-shadow(0 0 8px currentColor);

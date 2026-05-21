@@ -18,7 +18,7 @@ function DetailPage() {
   if (!festival) {
     return (
       <div className="dp-notfound">
-        <p>관광지 정보를 찾을 수 없습니다.</p>
+        <p>관광지 정보를 찾을 수 없어요.</p>
         <button onClick={() => navigate('/')}>홈으로 가기</button>
       </div>
     );

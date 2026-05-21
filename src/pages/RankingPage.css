@@ -91,10 +91,12 @@
   overflow: hidden;
   box-shadow: 0 1px 8px rgba(27, 42, 92, 0.07);
   transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
 }
 .rp-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 22px rgba(27, 42, 92, 0.13);
+  z-index: 1;
 }
 
 /* top3 카드: 왼쪽 accent + 강화된 그림자 */
