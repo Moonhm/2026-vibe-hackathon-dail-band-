@@ -225,8 +225,8 @@
   cursor: pointer;
 }
 .festival-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(27, 42, 92, 0.14);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 36px rgba(27, 42, 92, 0.16);
 }
 
 .card-img-wrap {
