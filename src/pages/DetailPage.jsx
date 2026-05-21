@@ -53,7 +53,7 @@ function DetailPage() {
         </div>
         <div className="dp-stat">
           <span className="dp-stat-label">전국 순위</span>
-          <span className="dp-stat-value">🏆 #{festival.popularityRank}</span>
+          <span className="dp-stat-value">🏆 #{festival.popularityRank ?? '-'}</span>
         </div>
         <div className="dp-stat">
           <span className="dp-stat-label">트렌드</span>

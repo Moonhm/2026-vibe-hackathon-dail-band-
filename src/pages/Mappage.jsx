@@ -52,7 +52,7 @@ const KOREA_CENTER  = { lat: 36.5, lng: 127.8 };
 const INITIAL_LEVEL = 13;
 const INIT_FILTERS  = { region: null, ageGroup: '전체', season: CURRENT_SEASON_KEY, sortByPopularity: false, showHeatmap: false };
 
-const HEAT_MAX = Math.max(...regions.map(r => r.visitors));
+const HEAT_MAX = regions.length ? Math.max(...regions.map(r => r.visitors)) : 1;
 
 // ── 필터 세션 유지 (30분) ───────────────────────────────────
 const SESSION_KEY = 'nolrugaja_map_filters';
@@ -103,7 +103,7 @@ function matchesSeason(date, season) {
 function applyFilters(list, { region, ageGroup, season }) {
   return list.filter(f => {
     if (region && region !== '전국' && !(REGION_IDS[region] ?? []).includes(f.region)) return false;
-    if (ageGroup !== '전체' && !f.ageRankings[ageGroup]) return false;
+    if (ageGroup !== '전체' && !f.ageRankings?.[ageGroup]) return false;
     if (season   !== '전체' && !matchesSeason(f.date, season)) return false;
     return true;
   });
@@ -111,7 +111,7 @@ function applyFilters(list, { region, ageGroup, season }) {
 
 function getRank(festival, ageGroup) {
   if (ageGroup === '전체') return festival.popularityRank ?? '-';
-  return festival.ageRankings[ageGroup] ?? '-';
+  return festival.ageRankings?.[ageGroup] ?? '-';
 }
 
 // ── 컴포넌트 ───────────────────────────────────────────────
@@ -148,8 +148,8 @@ function Mappage() {
     if (!filters.sortByPopularity) return result;
     return [...result].sort((a, b) => {
       const ag = filters.ageGroup;
-      const ra = ag !== '전체' ? (a.ageRankings[ag] ?? 999) : (a.popularityRank ?? 999);
-      const rb = ag !== '전체' ? (b.ageRankings[ag] ?? 999) : (b.popularityRank ?? 999);
+      const ra = ag !== '전체' ? (a.ageRankings?.[ag] ?? 999) : (a.popularityRank ?? 999);
+      const rb = ag !== '전체' ? (b.ageRankings?.[ag] ?? 999) : (b.popularityRank ?? 999);
       return ra - rb;
     });
   }, [filters]);
