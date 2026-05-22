@@ -73,7 +73,7 @@ function RankingPage() {
         <div className="rp-header-text">
           <span className="rp-eyebrow">한국관광 빅데이터 기반</span>
           <h1 className="rp-title">인기 순위</h1>
-          <p className="rp-desc">지역별 방문자 수 기준 관광지 랭킹</p>
+          <p className="rp-desc">지역별 방문자 수를 기준으로 관광지 순위를 알려드려요!</p>
         </div>
 
         <div className="rp-tabs" role="tablist">
