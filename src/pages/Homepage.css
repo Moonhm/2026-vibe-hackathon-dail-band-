@@ -151,40 +151,6 @@
 }
 .hero-btn:hover .hero-btn-arrow { transform: translateX(3px); }
 
-/* 통계 칩 */
-.hero-stats {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 14px 20px;
-  margin-top: 28px;
-}
-.hero-stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-.hero-stat-num {
-  font-size: 18px;
-  font-weight: 800;
-  color: #fff;
-}
-.hero-stat-label {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
-}
-.hero-stat-divider {
-  width: 1px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.12);
-}
 
 /* ── TOP 3 섹션 ──────────────────────────────── */
 .top3-section {

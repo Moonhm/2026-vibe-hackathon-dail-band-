@@ -84,7 +84,7 @@ function DetailPage() {
           <h2 className="dp-section-title">👥 연령대별 인기 순위</h2>
           <div className="dp-age-grid">
             {AGE_GROUPS.map(age => {
-              const rank = festival.ageRankings[age];
+              const rank = festival.ageRankings?.[age];
               const cls = rank == null ? 'rank-none' : rank <= 5 ? 'rank-top' : rank <= 15 ? 'rank-mid' : '';
               return (
                 <div key={age} className="dp-age-cell">
