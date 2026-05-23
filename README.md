@@ -13,7 +13,7 @@ All ranking and recommendation data is sourced from Korea Tourism Data Lab's sur
 | Screen | Description |
 |--------|-------------|
 | **Home** | Top-3 popular spots, Seoul tourism dashboard (YoY indicators, inflow/outflow regions), service overview. |
-| **Map** | Kakao Maps with badge overlays for 30 top tourist spots. Filter by region, age group (20s–60s+), category, season, and popularity. |
+| **Map** | Kakao Maps with badge overlays for 33 top tourist spots. Filter by region, age group (20s–60s+), season, and popularity. |
 | **Ranking** | Top-10 visitor ranking with medal badges, trend indicators (▲▶▼), visitor bar charts, and regional tourism demand index. Toggle between nationwide / metro / regional tabs. |
 | **Recommend** | 5-question travel personality quiz that recommends 3 destinations matching your style. |
 | **Detail** | Full spot detail: visitor stats, age-group ranking, tags, 14-day crowd forecast (live API), and related spots. |

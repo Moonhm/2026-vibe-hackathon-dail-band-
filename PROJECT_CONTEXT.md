@@ -2,7 +2,7 @@
 
 > 이 파일을 읽는 AI는 이 프로젝트를 바로 이어서 개발할 수 있다.
 > 완전판(GitHub PAT 포함)은 로컬 서버 `/home/jovyan/work/data/PROJECT_CONTEXT_PRIVATE.md` 에 있다.
-> 최종 수정: 2026-05-20
+> 최종 수정: 2026-05-23
 
 ---
 
@@ -418,7 +418,9 @@ node_modules/ / dist/ / .env.*  ← .env.local은 수동 생성 필요
 
 - 경로: `public/images/{id}_{영문명}.jpg`
 - 예: `1_everland.jpg`, `2_coex.jpg`, ..., `33_metasequoia.jpg`
+- 현재 33장 총 6.1MB (ImageMagick으로 최대 1200px·Q75 압축 완료)
 - 로드 실패 시 `IMG_FALLBACK` (constants.js의 base64 SVG 플레이스홀더 자동 대체)
+- ⚠️ 이미지 추가 시: git LFS 설정 예정 (git-lfs track "*.jpg" → .gitattributes 커밋 후 push)
 
 ---
 
@@ -446,7 +448,7 @@ server.watch.usePolling: true  // 파일 변경 감지
 
 ---
 
-## 19. 현재 완료 상태 (2026-05-20)
+## 19. 현재 완료 상태 (2026-05-23)
 
 - [x] 전체 코드 최적화 (공통 상수, dead code 제거, vendor 번들 분리)
 - [x] RankingPage 인기 키워드 칩 섹션 추가
@@ -460,6 +462,14 @@ server.watch.usePolling: true  // 파일 변경 감지
 - [x] 트렌드 데이터 현실화 (상승 16 / 하락 2 / 유지 15)
 - [x] 홈 로고 클릭 → URL 복사 + 토스트 기믹
 - [x] 지도 필터 힌트 말풍선 (초록, 1시간 TTL 재표시, localStorage timestamp 기반)
+- [x] 이미지 전체 압축 최적화 (150MB → 6.1MB, 96% 감소 / ImageMagick 1200px·Q75)
+- [x] git 히스토리 정리 (251MB → 6.9MB / git-filter-repo로 구버전 blob 제거)
+- [x] 전체 해요체 통일 (Recommend·CrowdForecast·RankingPage·DetailPage·Homepage 모든 사용자 노출 문구)
+- [x] 추천 결과 카드 등장 애니메이션 + hover scale 효과 (CSS translate/transform 분리로 충돌 해결)
+- [x] 코드 버그 수정: ageRankings optional chaining 4곳, HEAT_MAX 빈 배열 방어, popularityRank null guard
+- [x] 미사용 CSS 제거 (hero-stats 5개 클래스, rp-dot/rp-date)
+- [x] 카드 hover z-index 추가 (Homepage·RankingPage — 인접 카드에 가려짐 방지)
+- [x] 지도 필터 패널 높이 축소 (70vh → 55vh) + 내부 패딩·간격 전체 조정
 
 ## 20. 다음 작업 아이디어 (미결)
 
