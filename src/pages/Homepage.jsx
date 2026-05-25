@@ -141,8 +141,8 @@ function Homepage() {
         <p className="about-desc-ko">
           놀러가자는 한국관광데이터랩의 빅데이터를 기반으로 전국 관광지의 방문자 현황,
           연령대별 선호 관광지, 지역별 인기 순위를 시각화한 국내 여행 정보 서비스예요.
-          이동통신·신용카드·내비게이션 데이터를 복합 분석하여 실제 국내 여행자의 이동
-          패턴과 소비 행태를 반영하였습니다.
+          이동통신·신용카드·내비게이션 데이터를 복합 분석해서 실제 국내 여행자의 이동
+          패턴과 소비 행태를 반영했어요.
         </p>
         <p className="about-desc-en">
           Nolrugaja is a domestic travel guide that visualizes visitor statistics,
