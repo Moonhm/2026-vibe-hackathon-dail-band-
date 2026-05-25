@@ -193,7 +193,7 @@ function Mappage() {
     const fadeOut = setTimeout(() => {
       setHintOut(true);
       setTimeout(() => setHintDismissed(true), 300);
-    }, 3500);
+    }, 4500);
     return () => clearTimeout(fadeOut);
   }, [showHint]);
 
