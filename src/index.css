@@ -19,7 +19,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overscroll-behavior-y: contain;
-  background-color: #0f172a;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
 }
@@ -31,7 +31,7 @@ body {
   background-color: #f0f2f8;
   position: relative;
   overflow-x: hidden;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 
 a {
