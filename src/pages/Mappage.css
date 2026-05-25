@@ -16,7 +16,7 @@
 /* ── 필터 힌트 말풍선 ─────────────────────────── */
 .map-filter-hint {
   position: fixed;
-  bottom: 92px;
+  bottom: 85px;
   right: 72px;
   z-index: 150;
   background: linear-gradient(135deg, #22c55e, #15803d);
