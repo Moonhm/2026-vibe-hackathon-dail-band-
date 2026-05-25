@@ -42,7 +42,9 @@ async function fetchPage(range, pageNo) {
   const res = await fetch(`${BASE}?${params}`);
   if (!res.ok) throw new Error(`upstream ${res.status}`);
   const data = await res.json();
-  return data.response.body.items.item;
+  const item = data?.response?.body?.items?.item;
+  if (!item) return [];
+  return Array.isArray(item) ? item : [item];
 }
 
 export async function onRequestGet() {

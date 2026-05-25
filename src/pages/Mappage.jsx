@@ -223,7 +223,7 @@ function Mappage() {
 
     if (!filters.showHeatmap) return;
 
-    const heatMax = liveRegions.length ? Math.max(...liveRegions.map(r => r.visitors)) : 1;
+    const heatMax = liveRegions.length ? Math.max(...liveRegions.map(r => r.visitors || 0), 1) : 1;
     liveRegions.forEach(r => {
       const ratio  = r.visitors / heatMax;
       const color  = thermalHex(ratio);

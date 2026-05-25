@@ -16,8 +16,8 @@ function loadSaved() {
 }
 
 function formatDate(iso) {
-  const d = new Date(iso);
-  return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
+  const [y, m, d] = iso.slice(0, 10).split('-');
+  return `${y}년 ${parseInt(m)}월 ${parseInt(d)}일`;
 }
 
 export default function Recommend() {

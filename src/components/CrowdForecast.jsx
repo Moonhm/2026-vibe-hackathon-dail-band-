@@ -36,7 +36,8 @@ function CrowdForecast({ areaCd, signguCd }) {
   if (loading) return <div className="cf-loading">혼잡도 예측 불러오는 중...</div>;
   if (error)   return <div className="cf-error">혼잡도 예측을 일시적으로 이용할 수 없어요.</div>;
 
-  const max = items.length > 0 ? Math.max(...items.map(d => parseFloat(d.cnctrRate)), 1) : 100;
+  const rates = items.map(d => { const r = parseFloat(d.cnctrRate); return isNaN(r) ? 0 : r; });
+  const max = rates.length > 0 ? Math.max(...rates, 1) : 100;
 
   return (
     <section className="cf-wrap">
@@ -49,7 +50,7 @@ function CrowdForecast({ areaCd, signguCd }) {
       </div>
       <div className="cf-bars">
         {items.map(d => {
-          const rate = parseFloat(d.cnctrRate);
+          const rate = isNaN(parseFloat(d.cnctrRate)) ? 0 : parseFloat(d.cnctrRate);
           const { label, cls } = crowdLevel(rate);
           const ymd = String(d.baseYmd);
           const date = new Date(`${ymd.slice(0,4)}-${ymd.slice(4,6)}-${ymd.slice(6,8)}`);

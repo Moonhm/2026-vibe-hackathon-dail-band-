@@ -139,7 +139,7 @@ function DetailPage() {
         </section>
 
         {/* ── 혼잡도 예측 ── */}
-        <CrowdForecast areaCd={festival.areaCd} signguCd={festival.signguCd} />
+        <CrowdForecast areaCd={String(festival.areaCd)} signguCd={String(festival.signguCd)} />
 
         {/* ── 연관 관광지 ── */}
         {(useApiData || staticRelated.length > 0) && (
