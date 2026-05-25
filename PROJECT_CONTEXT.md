@@ -379,6 +379,7 @@ const INIT_FILTERS = { ..., season: CURRENT_SEASON_KEY };
 
 ### 새 환경에서 처음 시작하는 순서
 ```bash
+export PATH="$HOME/.local/bin:$PATH"  # 0. git-lfs PATH 설정 (필수)
 cd /home/jovyan/work/nolrugaja
 npm install                          # 1. 패키지 설치
 echo "VITE_KAKAO_MAP_KEY=..." > .env.local  # 2. 환경변수 파일 생성 (키는 로컬 완전판 참조)
@@ -438,6 +439,11 @@ server.watch.usePolling: true  // 파일 변경 감지
 ## 18. 개발 시 주의사항
 
 1. **`git push mine main` 만 사용** — 다른 remote push 금지
+2. **이 서버에서 git 명령 실행 전 반드시 PATH 설정** — git-lfs가 `~/.local/bin`에 있음:
+   ```bash
+   export PATH="$HOME/.local/bin:$PATH"
+   ```
+   이 설정 없이 `git status` / `git add` 등 실행하면 `git-lfs: not found` 에러 발생.
 2. `IMG_FALLBACK`, `TREND`, `REGION_KO` → `utils/constants.js`에서 import
 3. `TREND` 사용 시 `.text` / `.cls` 사용 — `.label` 아님
 4. 카카오맵 핀 DOM 조작은 `overlayElsRef` / `rankElsRef` ref로만
