@@ -57,8 +57,6 @@ const HEAT_MAX = regions.length ? Math.max(...regions.map(r => r.visitors)) : 1;
 // ── 필터 세션 유지 (30분) ───────────────────────────────────
 const SESSION_KEY = 'nolrugaja_map_filters';
 const SESSION_TTL = 30 * 60 * 1000;
-const HINT_KEY    = 'nolrugaja_map_hint_shown';
-const HINT_TTL    = 60 * 60 * 1000; // 1시간
 
 function loadSessionFilters() {
   try {
@@ -138,8 +136,9 @@ function Mappage() {
   const [cardVisible, setCardVisible]           = useState(false);
   const [filters, setFilters]                   = useState(sessionFilters ?? { ...INIT_FILTERS, region: initRegion });
   const [filterOpen, setFilterOpen]             = useState(false);
-  const [showHint, setShowHint]                 = useState(false);
+  const [hintDismissed, setHintDismissed]       = useState(false);
   const [hintOut, setHintOut]                   = useState(false);
+  const showHint = mapReady && filters.region === null && !hintDismissed;
 
   const setFilter = (key, val) => setFilters(prev => ({ ...prev, [key]: val }));
 
@@ -187,19 +186,16 @@ function Mappage() {
     setTimeout(() => map.panBy(0, 225), 50);
   }, [mapReady]);
 
-  // 최초 방문 시 필터 힌트 (한 번만)
+  // 힌트 말풍선: 지역 미선택 상태면 표시, 3.5초 후 자동 페이드
   useEffect(() => {
-    if (!mapReady) return;
-    const last = Number(localStorage.getItem(HINT_KEY) || 0);
-    if (last && Date.now() - last < HINT_TTL) return;
-    localStorage.setItem(HINT_KEY, String(Date.now()));
-    setShowHint(true);
+    if (!showHint) return;
+    setHintOut(false);
     const fadeOut = setTimeout(() => {
       setHintOut(true);
-      setTimeout(() => setShowHint(false), 300);
+      setTimeout(() => setHintDismissed(true), 300);
     }, 3500);
     return () => clearTimeout(fadeOut);
-  }, [mapReady]);
+  }, [showHint]);
 
   // 인기도 히트맵 — 지역별 반투명 원
   useEffect(() => {
@@ -373,7 +369,7 @@ function Mappage() {
       {showHint && (
         <div
           className={`map-filter-hint${hintOut ? ' hint-out' : ''}`}
-          onClick={() => { setHintOut(true); setTimeout(() => setShowHint(false), 300); }}
+          onClick={() => { setHintOut(true); setTimeout(() => setHintDismissed(true), 300); }}
         >
           지역을 선택하면 핀이 나타나요!
         </div>
