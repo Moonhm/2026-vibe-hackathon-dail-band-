@@ -31,7 +31,8 @@ body {
   background-color: #f0f2f8;
   position: relative;
   overflow-x: hidden;
-  box-shadow: none;
+  /* fixed 자식들이 뷰포트 대신 이 컨테이너 기준으로 고정되도록 */
+  transform: translateZ(0);
 }
 
 a {
