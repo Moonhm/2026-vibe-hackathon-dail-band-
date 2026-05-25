@@ -52,7 +52,6 @@ const KOREA_CENTER  = { lat: 36.5, lng: 127.8 };
 const INITIAL_LEVEL = 13;
 const INIT_FILTERS  = { region: null, ageGroup: '전체', season: CURRENT_SEASON_KEY, sortByPopularity: false, showHeatmap: false };
 
-const HEAT_MAX = regions.length ? Math.max(...regions.map(r => r.visitors)) : 1;
 
 // ── 필터 세션 유지 (30분) ───────────────────────────────────
 const SESSION_KEY = 'nolrugaja_map_filters';
@@ -138,6 +137,8 @@ function Mappage() {
   const [filterOpen, setFilterOpen]             = useState(false);
   const [hintDismissed, setHintDismissed]       = useState(false);
   const [hintOut, setHintOut]                   = useState(false);
+  const [liveRegions, setLiveRegions]           = useState(regions);
+  const [visitorPeriod, setVisitorPeriod]       = useState('');
   const showHint = mapReady && filters.region === null && !hintDismissed;
 
   const setFilter = (key, val) => setFilters(prev => ({ ...prev, [key]: val }));
@@ -186,6 +187,21 @@ function Mappage() {
     setTimeout(() => map.panBy(0, 225), 50);
   }, [mapReady]);
 
+  // 빅데이터 지역별 방문자수 API — 히트맵 실시간 업데이트
+  useEffect(() => {
+    fetch('/api/visitors')
+      .then(r => r.json())
+      .then(({ period, regions: data }) => {
+        if (!data) return;
+        setLiveRegions(prev => prev.map(r => ({
+          ...r,
+          visitors: data[r.id] ?? r.visitors,
+        })));
+        if (period) setVisitorPeriod(period);
+      })
+      .catch(() => {}); // 실패 시 정적 데이터 유지
+  }, []);
+
   // 힌트 말풍선: 지역 미선택 상태면 표시, 3.5초 후 자동 페이드
   useEffect(() => {
     if (!showHint) return;
@@ -207,8 +223,9 @@ function Mappage() {
 
     if (!filters.showHeatmap) return;
 
-    regions.forEach(r => {
-      const ratio  = r.visitors / HEAT_MAX;
+    const heatMax = liveRegions.length ? Math.max(...liveRegions.map(r => r.visitors)) : 1;
+    liveRegions.forEach(r => {
+      const ratio  = r.visitors / heatMax;
       const color  = thermalHex(ratio);
       const radius = Math.round(15000 + ratio * 35000);
 
@@ -223,7 +240,7 @@ function Mappage() {
       circle.setMap(map);
       heatCirclesRef.current.push(circle);
     });
-  }, [filters.showHeatmap, mapReady]);
+  }, [filters.showHeatmap, mapReady, liveRegions]);
 
   // 카카오맵 SDK 동적 로드 + 지도 초기화
   useEffect(() => {
@@ -486,7 +503,7 @@ function Mappage() {
             </div>
             <p className="mfp-hint">
               {filters.showHeatmap
-                ? '전국 17개 지역 방문자 밀도를 색상으로 표시해요. 선택 지역과 무관하게 항상 전국 기준이에요.'
+                ? `전국 17개 지역 방문자 밀도를 색상으로 표시해요.${visitorPeriod ? ` (${visitorPeriod} 기준)` : ''}`
                 : '지역별 방문자 밀도를 색상으로 지도에 표시해 줘요.'}
             </p>
             {filters.showHeatmap && (
