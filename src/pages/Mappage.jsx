@@ -67,7 +67,7 @@ function loadSessionFilters() {
   } catch { return null; }
 }
 function saveSessionFilters(f) {
-  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify({ filters: f, ts: Date.now() })); } catch {}
+  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify({ filters: f, ts: Date.now() })); } catch { /* ignore */ }
 }
 
 function thermalHex(ratio) {

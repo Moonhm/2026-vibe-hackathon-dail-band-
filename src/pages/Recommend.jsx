@@ -40,7 +40,7 @@ export default function Recommend() {
       const allTags = newAnswers.flat();
       const recResults = getRecommendations(allTags);
       const entry = { results: recResults, savedAt: new Date().toISOString() };
-      try { localStorage.setItem(RESULT_KEY, JSON.stringify(entry)); } catch {}
+      try { localStorage.setItem(RESULT_KEY, JSON.stringify(entry)); } catch { /* ignore */ }
       setSaved(entry);
       setResults(recResults);
       setIsPrev(false);

@@ -40,7 +40,7 @@ function DetailPage() {
         }
       })
       .catch(() => setApiRelated([]));
-  }, [festival?.id]);
+  }, [festival?.id, festival?.areaCd, festival?.signguCd, festival?.name]);
 
   if (!festival) {
     return (

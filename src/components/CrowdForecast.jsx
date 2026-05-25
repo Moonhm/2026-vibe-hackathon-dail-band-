@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import './CrowdForecast.css';
 
 function crowdLevel(rate) {
@@ -10,7 +11,7 @@ function crowdLevel(rate) {
 
 const DAY_KO = ['일', '월', '화', '수', '목', '금', '토'];
 
-export default function CrowdForecast({ areaCd, signguCd }) {
+function CrowdForecast({ areaCd, signguCd }) {
   const [items, setItems]   = useState(null);
   const [error, setError]   = useState(null);
   const [loading, setLoading] = useState(true);
@@ -76,3 +77,10 @@ export default function CrowdForecast({ areaCd, signguCd }) {
     </section>
   );
 }
+
+CrowdForecast.propTypes = {
+  areaCd:   PropTypes.string.isRequired,
+  signguCd: PropTypes.string.isRequired,
+};
+
+export default CrowdForecast;

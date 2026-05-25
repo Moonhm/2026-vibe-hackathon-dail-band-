@@ -146,10 +146,10 @@ function Homepage() {
         </p>
         <p className="about-desc-en">
           Nolrugaja is a domestic travel guide that visualizes visitor statistics,
-          age-group preferences, and regional popularity rankings across South Korea's
+          age-group preferences, and regional popularity rankings across South Korea&apos;s
           tourist destinations — powered by big data from the Korea Tourism Data Lab.
           It integrates mobile, credit card, and navigation data to reflect real
-          domestic travelers' movement patterns and spending behavior.
+          domestic travelers&apos; movement patterns and spending behavior.
         </p>
 
         <div className="about-chips">
