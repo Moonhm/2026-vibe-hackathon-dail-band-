@@ -19,10 +19,19 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overscroll-behavior-y: contain;
+  background-color: #0f172a;
+  display: flex;
+  justify-content: center;
 }
 
 #root {
+  width: 100%;
+  max-width: 430px;
   min-height: 100vh;
+  background-color: #f0f2f8;
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
 }
 
 a {

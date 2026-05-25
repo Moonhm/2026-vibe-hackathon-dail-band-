@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { festivals } from '../data/festivals';
 import CrowdForecast from '../components/CrowdForecast';
@@ -9,11 +9,38 @@ import './DetailPage.css';
 
 const AGE_GROUPS = ['20대', '30대', '40대', '50대', '60대이상'];
 
+function cleanName(s) {
+  return s.replace(/[\s·\-()（）]/g, '').toLowerCase();
+}
+
 function DetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
+  const [apiRelated, setApiRelated] = useState(null); // null=loading, []+=done
+  const [relatedPeriod, setRelatedPeriod] = useState('');
   const festival = festivals.find(f => f.id === Number(id));
+
+  useEffect(() => {
+    if (!festival?.areaCd || !festival?.signguCd) return;
+    setApiRelated(null);
+    const params = new URLSearchParams({
+      areaCd: festival.areaCd,
+      signguCd: festival.signguCd,
+      name: festival.name,
+    });
+    fetch(`/api/related?${params}`)
+      .then(r => r.json())
+      .then(({ related, matched, baseYm }) => {
+        if (matched && related?.length > 0) {
+          setApiRelated(related);
+          if (baseYm) setRelatedPeriod(`${baseYm.slice(0, 4)}.${baseYm.slice(4)}`);
+        } else {
+          setApiRelated([]);
+        }
+      })
+      .catch(() => setApiRelated([]));
+  }, [festival?.id]);
 
   if (!festival) {
     return (
@@ -25,9 +52,24 @@ function DetailPage() {
   }
 
   const trend = TREND[festival.trend] ?? TREND['유지'];
-  const related = festivals
+
+  // API 결과가 있으면 사용, 없으면 같은 지역 정적 폴백
+  const useApiData = apiRelated && apiRelated.length > 0;
+  const staticRelated = festivals
     .filter(f => f.region === festival.region && f.id !== festival.id)
     .slice(0, 3);
+
+  // API 결과를 festivals.js 항목과 매칭
+  const resolvedRelated = useApiData
+    ? apiRelated.slice(0, 6).map(item => {
+        const matched = festivals.find(f =>
+          f.id !== festival.id &&
+          (cleanName(f.name).includes(cleanName(item.name)) ||
+           cleanName(item.name).includes(cleanName(f.name)))
+        );
+        return { ...item, festival: matched ?? null };
+      })
+    : null;
 
   return (
     <div className="dp-page">
@@ -99,25 +141,54 @@ function DetailPage() {
         {/* ── 혼잡도 예측 ── */}
         <CrowdForecast areaCd={festival.areaCd} signguCd={festival.signguCd} />
 
-        {/* ── 같은 지역 관광지 ── */}
-        {related.length > 0 && (
+        {/* ── 연관 관광지 ── */}
+        {(useApiData || staticRelated.length > 0) && (
           <section>
-            <h2 className="dp-section-title">{REGION_KO[festival.region]}의 다른 관광지</h2>
+            <h2 className="dp-section-title">
+              {useApiData
+                ? `연관 관광지${relatedPeriod ? ` (${relatedPeriod} 기준)` : ''}`
+                : `${REGION_KO[festival.region]}의 다른 관광지`}
+            </h2>
             <div className="dp-related">
-              {related.map(f => (
-                <div
-                  key={f.id}
-                  className="dp-related-card"
-                  onClick={() => navigate(`/detail/${f.id}`)}
-                >
-                  <img src={f.image} alt={f.name}
-                    onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = IMG_FALLBACK; }} />
-                  <div className="dp-related-info">
-                    <p className="dp-related-name">{f.name}</p>
-                    <p className="dp-related-date">{f.date}</p>
-                  </div>
-                </div>
-              ))}
+              {useApiData
+                ? resolvedRelated.map((item, i) =>
+                    item.festival ? (
+                      <div
+                        key={item.festival.id}
+                        className="dp-related-card"
+                        onClick={() => navigate(`/detail/${item.festival.id}`)}
+                      >
+                        <img src={item.festival.image} alt={item.festival.name}
+                          onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = IMG_FALLBACK; }} />
+                        <div className="dp-related-info">
+                          <p className="dp-related-name">{item.festival.name}</p>
+                          <p className="dp-related-date">{item.festival.date}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div key={i} className="dp-related-card dp-related-card--ext">
+                        <div className="dp-related-ext-body">
+                          <p className="dp-related-name">{item.name}</p>
+                          <p className="dp-related-date">{item.district} · {item.category}</p>
+                        </div>
+                      </div>
+                    )
+                  )
+                : staticRelated.map(f => (
+                    <div
+                      key={f.id}
+                      className="dp-related-card"
+                      onClick={() => navigate(`/detail/${f.id}`)}
+                    >
+                      <img src={f.image} alt={f.name}
+                        onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = IMG_FALLBACK; }} />
+                      <div className="dp-related-info">
+                        <p className="dp-related-name">{f.name}</p>
+                        <p className="dp-related-date">{f.date}</p>
+                      </div>
+                    </div>
+                  ))
+              }
             </div>
           </section>
         )}

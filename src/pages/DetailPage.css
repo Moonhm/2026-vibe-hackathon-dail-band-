@@ -180,6 +180,21 @@
   color: #22c55e;
   font-weight: 600;
 }
+.dp-related-card--ext {
+  cursor: default;
+  background: #f8f9ff;
+  border: 1px solid #e0e4f0;
+}
+.dp-related-card--ext:hover { transform: none; }
+.dp-related-ext-body {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.dp-related-card--ext .dp-related-name { color: #3d4f7c; }
+.dp-related-card--ext .dp-related-date { color: #8c9bbf; font-weight: 500; }
 
 /* ── 연령대별 순위 ───────────────────────── */
 .dp-age-grid {

@@ -1,5 +1,5 @@
 const API_KEY = 'zH1Ajghx0euybdD9BbPBYpBTNTpGscQcGPFtoHSWV9ZmP3KnpVhJxfVO01seBplRXgMefHYZvm/VxSeNfoRtNQ==';
-const BASE = 'https://apis.data.go.kr/B551011/TatsCnctrRateService/tatsCnctrRateList';
+const BASE = 'https://apis.data.go.kr/B551011/TatsCnctrRateService1/tatsCnctrRateList1';
 
 const CORS = {
   'Content-Type': 'application/json',
